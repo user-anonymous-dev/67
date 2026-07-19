@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prédictions — Oui ou Non</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars"></div>
+
+  <main class="app">
+    <p class="eyebrow">Prédictions</p>
+    <h1>Devine juste.</h1>
+    <p class="subtitle">Réponds par oui ou par non. Chaque question a une réponse attendue.</p>
+
+    <div class="progress" id="progress"></div>
+
+    <section class="card" id="quiz">
+      <p class="counter" id="counter"></p>
+      <p class="question" id="question"></p>
+      <div class="choices">
+        <button class="choice oui" id="btn-oui">Oui</button>
+        <button class="choice non" id="btn-non">Non</button>
+      </div>
+    </section>
+
+    <section class="card results-card hidden" id="results">
+      <div class="results-header">
+        <p class="score" id="score"></p>
+        <p class="score-label" id="score-label"></p>
+      </div>
+      <div class="list" id="list"></div>
+      <button class="restart" id="restart">Recommencer</button>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
