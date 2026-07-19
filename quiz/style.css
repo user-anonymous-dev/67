@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #12101c;
+  --bg-glow: #1c1830;
+  --card: #1c1930;
+  --card-border: #34304e;
+  --gold: #d6b177;
+  --gold-soft: rgba(214, 177, 119, 0.14);
+  --ink: #f1ede4;
+  --ink-dim: #a9a4bd;
+  --good: #6fcf97;
+  --bad: #e8776b;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(214,177,119,0.08), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(126,110,190,0.12), transparent 50%),
+    var(--bg);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1.5px 1.5px at 60% 70%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 30% 85%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1.5px 1.5px at 45% 40%, rgba(255,255,255,0.3), transparent);
+  opacity: 0.7;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.eyebrow::before, .eyebrow::after {
+  content: "";
+  height: 1px;
+  width: 28px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 44px;
+  text-align: center;
+  margin: 0 0 6px;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--ink-dim);
+  font-size: 15px;
+  margin: 0 0 32px;
+}
+
+/* Constellation progress */
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.progress .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--card-border);
+  position: relative;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.progress .dot.done {
+  background: var(--gold);
+}
+
+.progress .dot.current {
+  background: var(--ink);
+  transform: scale(1.4);
+  box-shadow: 0 0 0 4px var(--gold-soft);
+}
+
+.progress .line {
+  width: 18px;
+  height: 1px;
+  background: var(--card-border);
+}
+
+/* Card */
+.card {
+  background: linear-gradient(180deg, var(--card), #171429);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  text-align: center;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6);
+  animation: rise 0.45s ease;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.counter {
+  font-size: 13px;
+  color: var(--ink-dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+.question {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.35;
+  margin: 0 0 34px;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choices {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.choice {
+  flex: 1;
+  max-width: 160px;
+  padding: 16px 0;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choice:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.choice:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.choice.oui:hover { border-color: var(--good); color: var(--good); }
+.choice.non:hover { border-color: var(--bad); color: var(--bad); }
+
+/* Results */
+.results-header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.score {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  color: var(--gold);
+  margin: 0;
+  line-height: 1;
+}
+
+.score-label {
+  color: var(--ink-dim);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.item .mark {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.item.correct .mark { background: rgba(111,207,151,0.15); color: var(--good); }
+.item.wrong .mark { background: rgba(232,119,107,0.15); color: var(--bad); }
+
+.item .text {
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.item .text .q {
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.item .text .a {
+  color: var(--ink-dim);
+  font-size: 13px;
+}
+
+.item .text .a b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.restart {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 999px;
+  border: none;
+  background: var(--gold);
+  color: #1a1626;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.restart:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.hidden { display: none !important; }
+
+@media (max-width: 480px) {
+  h1 { font-size: 34px; }
+  .card { padding: 34px 22px; }
+  .question { font-size: 23px; }
+  .score { font-size: 46px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; }
+  .choice, .restart { transition: none; }
+}
