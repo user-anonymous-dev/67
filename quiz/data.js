@@ -29,7 +29,7 @@ const PREDICTIONS = [
     reponse: "oui"
   },
   {
-    question: "Tu tes déja fais harceler ?",
+    question: "Penses tu que je vais réussir a deviner tes réponses ?",
     reponse: "oui"
   },
   {
